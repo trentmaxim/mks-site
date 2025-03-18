@@ -37,14 +37,14 @@ body {
 }
 
 .main-header{
-  background-image: url("./mural.jpg");
+  background-image: url("/assets/mural.jpg");
   background-repeat: no-repeat;
   background-size: cover; /* Make the background cover the entire div */
   background-position: center; /* Center the background image */
 }
 
 .main-header-bg {
-  background-image: url('./mural.jpg');
+  background-image: url('/assets/mural.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
