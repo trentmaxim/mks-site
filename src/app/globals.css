@@ -75,7 +75,33 @@ body {
   transform-origin: bottom left;
 }
 
-.shrink-navbar {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
+
+
+/* Default styles for larger screens */
+.main-navbar ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-navbar ul li {
+  padding: 1rem;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .main-navbar ul {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the left */
+    padding: 1rem;
+  }
+
+  .main-navbar ul li {
+    padding: 0.5rem 0; /* Reduce padding for smaller screens */
+  }
+
+  .top-nav h1 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
 }

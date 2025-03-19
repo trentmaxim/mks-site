@@ -1,23 +1,32 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useEffect } from 'react';
 import '@/app/globals.css';
 
 export default function NavBar() {
-  useEffect(() => {
-    const handleScroll = () => {
-      const header = document.querySelector('.main-navbar h1');
-      const navbar = document.querySelector('.main-navbar');
-      const scrollY = window.scrollY;
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNavTopVisible, setIsNavTopVisible] = useState(true);
 
-      if (scrollY > 300) {
-        header.classList.add('opacity-0');
-        header.classList.add('shrink-navbar');
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        // Scrolling down
+        setIsNavTopVisible(false);
       } else {
-        header.classList.remove('opacity-0');
-        header.classList.remove('shrink-navbar');
+        // Scrolling up
+        setIsNavTopVisible(true);
       }
+
+      lastScrollY = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -28,25 +37,56 @@ export default function NavBar() {
   }, []);
 
   return (
-    <nav className="main-navbar sticky top-0 z-50 bg-white text-black dark:bg-black dark:text-white transition-all duration-300">
-      <div className="flex flex-col items-center justify-end">
-        <h1 className="p-5 transition-opacity duration-300">Malayala Kshatriya Samajam</h1>
-        <div className="w-3/4 border-t border-gray-300 my-2"></div>
-        <ul className="flex flex-row">
-          <li className="p-5">
-            <Link href="#" className="hover-underline">Home</Link>
+    <nav className={` main-navbar sticky top-0 z-50 bg-white text-black dark:bg-black dark:text-white transition-all duration-300
+    ${isNavTopVisible ? '' : 'top-[-5%]'}`}>
+      <div
+        className={`flex items-center md:justify-center sm:justify-between px-4 py-3 border-b border-gray-300 w-full nav-top transform transition-all duration-500 ease-in-out ${
+          isNavTopVisible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
+        }`}
+      >
+        {/* Logo */}
+        <h1 className="text-2xl font-bold">Malayala Kshatriya Samajam</h1>
+
+        {/* Hamburger Button */}
+        <button
+          className="block md:hidden text-2xl focus:outline-none"
+          onClick={toggleMenu}
+        >
+          ☰
+        </button>
+      </div>
+
+      {/* Navigation Links */}
+      <div
+        className={`md:flex md:items-center md:justify-center ${
+          isMenuOpen ? 'block' : 'hidden'
+        }`}
+      >
+        <ul className="flex flex-col md:flex-row md:space-x-6 text-center">
+          <li className="p-4">
+            <Link href="#" className="hover-underline">
+              Home
+            </Link>
           </li>
-          <li className="p-5">
-            <Link href="#" className="hover-underline">History</Link>
+          <li className="p-4">
+            <Link href="#" className="hover-underline">
+              History
+            </Link>
           </li>
-          <li className="p-5">
-            <Link href="#" className="hover-underline">Gallery</Link>
+          <li className="p-4">
+            <Link href="#" className="hover-underline">
+              Gallery
+            </Link>
           </li>
-          <li className="p-5">
-            <Link href="#" className="hover-underline">About</Link>
+          <li className="p-4">
+            <Link href="#" className="hover-underline">
+              About
+            </Link>
           </li>
-          <li className="p-5">
-            <Link href="#" className="hover-underline">Contact</Link>
+          <li className="p-4">
+            <Link href="#" className="hover-underline">
+              Contact
+            </Link>
           </li>
         </ul>
       </div>
