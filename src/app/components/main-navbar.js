@@ -71,28 +71,48 @@ export default function NavBar() {
       >
         <ul className="flex flex-col md:flex-row md:space-x-6 text-center">
           <li className="p-4">
-            <Link href="#" className="hover-underline">
+            <Link
+              href="#"
+              className="hover:text-orange-500 relative group transition-all duration-300"
+            >
               Home
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
           <li className="p-4">
-            <Link href="#" className="hover-underline">
+            <Link
+              href="#"
+              className="hover:text-orange-500 relative group transition-all duration-300"
+            >
               History
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
           <li className="p-4">
-            <Link href="#" className="hover-underline">
+            <Link
+              href="#"
+              className="hover:text-orange-500 relative group transition-all duration-300"
+            >
               Gallery
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
           <li className="p-4">
-            <Link href="#" className="hover-underline">
+            <Link
+              href="#"
+              className="hover:text-orange-500 relative group transition-all duration-300"
+            >
               About
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
           <li className="p-4">
-            <Link href="#" className="hover-underline">
+            <Link
+              href="#"
+              className="hover:text-orange-500 relative group transition-all duration-300"
+            >
               Contact
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
             </Link>
           </li>
         </ul>
